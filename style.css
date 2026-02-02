@@ -5,14 +5,12 @@
     --text-dark: #1A1A1A;
 }
 
-/* GLOBAL MINIMALISM */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); }
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-/* EXCLUSIVE PAGE SNAPPING */
 .snap-page {
     height: 100vh;
     width: 100%;
@@ -28,7 +26,6 @@ body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: va
 .page-slate { background: var(--slate); }
 .page-navy { background: var(--navy); color: var(--white); }
 
-/* NAVBAR */
 .navbar {
     position: fixed; top: 0; width: 100%; z-index: 1000;
     background: rgba(255, 255, 255, 0.95);
@@ -46,10 +43,11 @@ body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: va
 .nav-right { display: flex; align-items: center; gap: 40px; }
 .nav-links { display: flex; list-style: none; gap: 25px; }
 .nav-links a { text-decoration: none; color: var(--navy); font-weight: 700; font-size: 0.85rem; }
-.social-icons-top img { height: 18px; opacity: 0.7; transition: 0.3s; filter: grayscale(100%); }
-.social-icons-top img:hover { opacity: 1; }
 
-/* PAGE 1: HERO & PILLARS */
+.social-icons-top { display: flex; gap: 15px; }
+.social-icons-top img { height: 18px; filter: grayscale(100%); transition: 0.3s opacity; }
+.social-icons-top img:hover { opacity: 0.6; }
+
 .hero-box { text-align: center; margin-bottom: 60px; }
 .pedigree { color: var(--navy); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
 .headline { font-size: 4rem; font-weight: 800; color: var(--navy); margin: 15px 0; letter-spacing: -2px; }
@@ -59,7 +57,6 @@ body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: va
 .pillar-card { border: 1px solid var(--navy); padding: 40px; text-align: left; }
 .pillar-card h3 { font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 2px; color: var(--navy); }
 
-/* PAGE 2: TOOLS */
 .section-title { font-size: 2.5rem; font-weight: 800; color: var(--navy); margin-bottom: 50px; text-align: center; }
 .tools-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .tool-card { background: var(--white); padding: 40px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
@@ -69,21 +66,19 @@ body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: va
 .form-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; }
 input, select { width: 100%; padding: 12px; border: 1px solid #ddd; font-family: inherit; font-size: 1rem; }
 
-.btn-navy { background: var(--navy); color: var(--white); border: none; padding: 15px; width: 100%; cursor: pointer; font-weight: 700; letter-spacing: 1px; }
+.btn-navy { background: var(--navy); color: var(--white); border: none; padding: 15px; width: 100%; cursor: pointer; font-weight: 700; }
 .result-display { margin-top: 25px; padding: 15px; background: #f9f9f9; text-align: center; font-weight: 800; color: var(--navy); border: 1px dashed #ccc; }
 
-/* PAGE 3: CONTACT */
 .contact-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; align-items: center; }
-.inquiry-card { background: var(--white); color: var(--navy); padding: 40px; }
+.inquiry-card { background: var(--white); color: var(--navy); padding: 40px; border-radius: 0; }
 .inquiry-card h3 { margin-bottom: 20px; font-size: 1.5rem; font-weight: 800; }
-.inquiry-card input, .inquiry-card select { margin-bottom: 15px; }
 
 .btn-slate { background: #333; color: white; border: none; padding: 15px; width: 100%; cursor: pointer; font-weight: 700; }
 
 .label { font-size: 0.75rem; font-weight: 800; letter-spacing: 3px; color: var(--slate); opacity: 0.6; margin-bottom: 10px; }
 .info-text { font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; }
 .social-links-bottom { display: flex; gap: 20px; }
-.social-links-bottom a { color: var(--white); text-decoration: none; font-weight: 700; font-size: 0.8rem; border-bottom: 1px solid var(--white); padding-bottom: 2px; }
+.social-links-bottom a { color: var(--white); text-decoration: none; font-weight: 700; font-size: 0.8rem; border-bottom: 1px solid var(--white); }
 
 .map-wrapper { border: 1px solid rgba(255,255,255,0.1); margin-top: 20px; height: 250px; }
 .grayscale-map { width: 100%; height: 100%; border: none; filter: grayscale(100%) invert(90%); }
@@ -94,5 +89,4 @@ input, select { width: 100%; padding: 12px; border: 1px solid #ddd; font-family:
     .headline { font-size: 2.2rem; }
     .pillars-grid, .tools-layout, .contact-grid { grid-template-columns: 1fr; }
     .snap-page { height: auto; padding: 100px 0; scroll-snap-align: none; }
-    .nav-right { display: none; }
 }
