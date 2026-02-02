@@ -1,28 +1,36 @@
 /**
- * Krishna Vriddhi Capital - Interactive Tools Logic
+ * Krishna Vriddhi Capital - Official Site Logic
+ * Includes: Risk Assessment, SIP Calculator, and Appointment Form
  */
 
 // --- 1. RISK APPETITE QUIZ LOGIC ---
 let riskPoints = 0;
 
 function nextStep(step, val) {
-    // Add points from the clicked answer
+    // Accumulate points
     riskPoints += val;
     
-    // Hide the current question step
-    document.getElementById('step' + step).style.display = 'none';
+    // Hide current step
+    const currentStep = document.getElementById('step' + step);
+    if (currentStep) currentStep.style.display = 'none';
     
-    // Determine if we show the next question or the final result
+    // Show next step or results
     if (step < 3) {
-        document.getElementById('step' + (step + 1)).style.display = 'block';
+        const next = document.getElementById('step' + (step + 1));
+        if (next) next.style.display = 'block';
     } else {
-        const resBox = document.getElementById('risk-result');
-        const typeText = document.getElementById('p-type');
-        const descText = document.getElementById('p-desc');
-        
+        showRiskResult();
+    }
+}
+
+function showRiskResult() {
+    const resBox = document.getElementById('risk-result');
+    const typeText = document.getElementById('p-type');
+    const descText = document.getElementById('p-desc');
+    
+    if (resBox) {
         resBox.style.display = 'block';
         
-        // Logical outcomes based on total points
         if (riskPoints <= 6) {
             typeText.innerText = "Conservative";
             descText.innerText = "You prioritize capital safety. We recommend focusing on Debt instruments, Liquid Funds, and Gold for your portfolio.";
@@ -47,28 +55,29 @@ function resetQuiz() {
 
 // --- 2. SIP CALCULATOR LOGIC ---
 function calculateSIP() {
-    // Grab user inputs
     const P = parseFloat(document.getElementById('monthlyInv').value);
     const annualRate = parseFloat(document.getElementById('returns').value);
     const years = parseFloat(document.getElementById('years').value);
 
-    // Validation
-    if (!P || !annualRate || !years) {
-        alert("Please enter all financial details.");
+    if (isNaN(P) || isNaN(annualRate) || isNaN(years)) {
+        alert("Please enter valid numerical values.");
         return;
     }
 
-    // Calculation Constants
     const r = (annualRate / 100) / 12; // Monthly interest rate
-    const n = years * 12;              // Total number of months
+    const n = years * 12;              // Total months
 
-    // SIP Formula: M = P × ({[1 + i]^n – 1} / i) × (1 + i)
+    // SIP Formula: FV = P × ({[1 + i]^n – 1} / i) × (1 + i)
     const futureValue = P * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
     
-    // Display result with Indian Number Formatting
     const resultDiv = document.getElementById('resultBox');
     const displayValue = document.getElementById('sipResult');
     
-    resultDiv.style.display = 'block';
-    displayValue.innerText = "₹" + Math.round(futureValue).toLocaleString('en-IN');
+    if (resultDiv && displayValue) {
+        resultDiv.style.display = 'block';
+        displayValue.innerText = "₹" + Math.round(futureValue).toLocaleString('en-IN');
+    }
 }
+
+
+// ---
