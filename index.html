@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krishna Vriddhi Capital | Wealth Management</title>
+    <title>Krishna Vriddhi Capital | Wealth & Wisdom</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -17,15 +17,16 @@
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#offerings">Offerings</a></li>
+            <li><a href="#risk-quiz">Risk Profile</a></li>
             <li><a href="#calculator">SIP Calculator</a></li>
         </ul>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <h1>Growth Inspired by Wisdom</h1>
+            <h1>Krishna Vriddhi Capital</h1>
             <p>Blending ancient Indian philosophy with modern financial strategies.</p>
-            <a href="#calculator" class="cta-button">Begin Your Investment Journey</a>
+            <a href="#risk-quiz" class="cta-button">Check Your Risk Profile</a>
         </div>
     </header>
 
@@ -34,41 +35,59 @@
             <h2>Our Philosophy</h2>
             <p class="intro-text">At <strong>Krishna Vriddhi Capital</strong>, we believe that true wealth is built not just through numbers, but through <strong>discipline, wisdom, and a long-term vision.</strong></p>
             <p>Inspired by the values of Lord Krishna and the meaning of “Vriddhi” – growth – our firm blends ancient Indian philosophy with modern financial strategies to guide individuals, families, and businesses toward lasting prosperity.</p>
-            <p>We are a boutique wealth management firm committed to creating customized, ethical, and tax-efficient financial plans that align with your life goals. Whether you're building wealth, preserving it, or planning a legacy, we’re here to walk the journey with you — with transparency, care, and clarity.</p>
-            
             <div class="vision-mission-grid">
                 <div class="vm-card">
                     <h3>Our Vision</h3>
-                    <p>To become India’s most trusted boutique wealth management firm, by combining timeless wisdom with modern financial acumen, & help clients achieve not just monetary success but peace of mind and growth.</p>
+                    <p>To become India’s most trusted boutique wealth management firm by combining timeless wisdom with modern financial acumen.</p>
                 </div>
                 <div class="vm-card">
                     <h3>Our Mission</h3>
-                    <p>To empower individuals and families to achieve sustainable financial growth by offering values-driven, personalized wealth management solutions rooted in integrity, discipline, and financial literacy.</p>
+                    <p>To empower families to achieve sustainable financial growth through values-driven, personalized wealth management.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="offerings" class="section bg-gold">
+    <section id="risk-quiz" class="section bg-light">
         <div class="container">
-            <h2 class="white-text">Our Offerings</h2>
+            <h2>Risk Appetite Assessment</h2>
+            <p>Understand your investment temperament before you invest.</p>
+            <div class="quiz-container" id="quiz-box">
+                <div id="step1" class="quiz-step">
+                    <p><strong>1. What is your primary investment goal?</strong></p>
+                    <button class="quiz-btn" onclick="nextStep(1, 1)">Protecting my money (Safety)</button>
+                    <button class="quiz-btn" onclick="nextStep(1, 3)">Balanced growth over time</button>
+                    <button class="quiz-btn" onclick="nextStep(1, 5)">Maximum wealth creation</button>
+                </div>
+                <div id="step2" class="quiz-step" style="display:none;">
+                    <p><strong>2. How would you react if your portfolio dropped 20%?</strong></p>
+                    <button class="quiz-btn" onclick="nextStep(2, 1)">Sell and exit immediately</button>
+                    <button class="quiz-btn" onclick="nextStep(2, 3)">Wait for market recovery</button>
+                    <button class="quiz-btn" onclick="nextStep(2, 5)">Invest more at lower prices</button>
+                </div>
+                <div id="step3" class="quiz-step" style="display:none;">
+                    <p><strong>3. How long can you stay invested?</strong></p>
+                    <button class="quiz-btn" onclick="nextStep(3, 1)">Less than 3 years</button>
+                    <button class="quiz-btn" onclick="nextStep(3, 3)">3 to 7 years</button>
+                    <button class="quiz-btn" onclick="nextStep(3, 5)">More than 7 years</button>
+                </div>
+                <div id="risk-result" style="display:none;" class="result-display">
+                    <h3>Your Profile: <span id="profile-type" style="color:#c5a059;"></span></h3>
+                    <p id="profile-desc"></p>
+                    <button class="calc-btn" onclick="resetQuiz()">Retake Quiz</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="offerings" class="section bg-navy">
+        <div class="container">
+            <h2 class="gold-text">Our Offerings</h2>
             <div class="offerings-grid">
-                <div class="o-card">
-                    <h4>Wealth Planning</h4>
-                    <p>Strategic planning for life goals such as buying a home, children's education, marriage, and retirement.</p>
-                </div>
-                <div class="o-card">
-                    <h4>Investment Management</h4>
-                    <p>Curated portfolios across mutual funds, PMS, debt, AIF’s, Structured Products, and Unlisted Shares.</p>
-                </div>
-                <div class="o-card">
-                    <h4>Tax Optimization</h4>
-                    <p>Smart planning across income, capital gains, and HUF/family structuring to legally minimize taxes.</p>
-                </div>
-                <div class="o-card">
-                    <h4>Retirement & Legacy</h4>
-                    <p>Secure your golden years and plan for a smooth, value-aligned transfer of wealth across generations.</p>
-                </div>
+                <div class="o-card"><h4>Wealth Planning</h4><p>Strategic planning for life goals and retirement.</p></div>
+                <div class="o-card"><h4>Investment Management</h4><p>Curated portfolios across Mutual Funds, PMS, and AIFs.</p></div>
+                <div class="o-card"><h4>Tax Optimization</h4><p>Smart planning to legally minimize taxes.</p></div>
+                <div class="o-card"><h4>Legacy Planning</h4><p>Smooth transfer of wealth across generations.</p></div>
             </div>
         </div>
     </section>
@@ -77,20 +96,14 @@
         <div class="container">
             <h2>SIP Growth Calculator</h2>
             <div class="calc-container">
-                <div class="input-group">
-                    <label>Monthly Investment (₹)</label>
-                    <input type="number" id="monthlyInv" value="5000">
-                </div>
-                <div class="input-group">
-                    <label>Expected Return (p.a %)</label>
-                    <input type="number" id="returns" value="12">
-                </div>
-                <div class="input-group">
-                    <label>Duration (Years)</label>
-                    <input type="number" id="years" value="10">
-                </div>
+                <label>Monthly Investment (₹)</label>
+                <input type="number" id="monthlyInv" value="5000">
+                <label>Expected Return (p.a %)</label>
+                <input type="number" id="returns" value="12">
+                <label>Duration (Years)</label>
+                <input type="number" id="years" value="10">
                 <button onclick="calculateSIP()" class="calc-btn">Calculate Your Vriddhi</button>
-                <div id="resultBox" class="result-display" style="display:none;">
+                <div id="resultBox" class="result-display" style="display:none; margin-top:20px;">
                     <p>Estimated Future Value:</p>
                     <h3 id="sipResult"></h3>
                 </div>
@@ -100,9 +113,7 @@
 
     <footer>
         <p>© 2026 krishnavriddhicapital.com All rights reserved</p>
-        <div class="footer-links">
-            <a href="#">Facebook</a> | <a href="#">Twitter</a>
-        </div>
+        <div class="footer-links"><a href="#">Facebook</a> | <a href="#">Twitter</a></div>
     </footer>
 
     <script src="script.js"></script>
