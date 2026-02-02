@@ -5,44 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krishna Vriddhi Capital | Wealth Management</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">Krishna Vriddhi Capital</div>
+        <div class="logo-container">
+            <img src="logo.png" alt="KV Capital Logo" class="logo-img">
+            <span class="logo-text">Krishna Vriddhi Capital</span>
+        </div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#contact" class="btn">Contact</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#offerings">Offerings</a></li>
+            <li><a href="#calculator">SIP Calculator</a></li>
         </ul>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <h1>Grow Your Wealth with Confidence</h1>
-            <p>Expert financial advisory and portfolio management tailored for your future.</p>
-            <a href="#" class="cta-button">Get Started</a>
+            <h1>Growth Inspired by Wisdom</h1>
+            <p>Blending ancient Indian philosophy with modern financial strategies.</p>
+            <a href="#calculator" class="cta-button">Begin Your Investment Journey</a>
         </div>
     </header>
 
-    <section class="services">
-        <h2>Our Services</h2>
-        <div class="service-grid">
-            <div class="card">
-                <h3>Mutual Funds</h3>
-                <p>Diversify your investments with expert-picked funds.</p>
-            </div>
-            <div class="card">
-                <h3>Tax Planning</h3>
-                <p>Maximize your savings with smart tax strategies.</p>
-            </div>
-            <div class="card">
-                <h3>Retirement</h3>
-                <p>Secure your future with long-term wealth growth.</p>
+    <section id="about" class="section">
+        <div class="container">
+            <h2>Our Philosophy</h2>
+            <p class="intro-text">At <strong>Krishna Vriddhi Capital</strong>, we believe that true wealth is built not just through numbers, but through <strong>discipline, wisdom, and a long-term vision.</strong></p>
+            <p>Inspired by the values of Lord Krishna and the meaning of “Vriddhi” – growth – our firm blends ancient Indian philosophy with modern financial strategies to guide individuals, families, and businesses toward lasting prosperity.</p>
+            <p>We are a boutique wealth management firm committed to creating customized, ethical, and tax-efficient financial plans that align with your life goals. Whether you're building wealth, preserving it, or planning a legacy, we’re here to walk the journey with you — with transparency, care, and clarity.</p>
+            
+            <div class="vision-mission-grid">
+                <div class="vm-card">
+                    <h3>Our Vision</h3>
+                    <p>To become India’s most trusted boutique wealth management firm, by combining timeless wisdom with modern financial acumen, & help clients achieve not just monetary success but peace of mind and growth.</p>
+                </div>
+                <div class="vm-card">
+                    <h3>Our Mission</h3>
+                    <p>To empower individuals and families to achieve sustainable financial growth by offering values-driven, personalized wealth management solutions rooted in integrity, discipline, and financial literacy.</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <section id="offerings" class="section bg-gold">
+        <div class="container">
+            <h2 class="white-text">Our Offerings</h2>
+            <div class="offerings-grid">
+                <div class="o-card">
+                    <h4>Wealth Planning</h4>
+                    <p>Strategic planning for life goals such as buying a home, children's education, marriage, and retirement.</p>
+                </div>
+                <div class="o-card">
+                    <h4>Investment Management</h4>
+                    <p>Curated portfolios across mutual funds, PMS, debt, AIF’s, Structured Products, and Unlisted Shares.</p>
+                </div>
+                <div class="o-card">
+                    <h4>Tax Optimization</h4>
+                    <p>Smart planning across income, capital gains, and HUF/family structuring to legally minimize taxes.</p>
+                </div>
+                <div class="o-card">
+                    <h4>Retirement & Legacy</h4>
+                    <p>Secure your golden years and plan for a smooth, value-aligned transfer of wealth across generations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="section">
+        <div class="container">
+            <h2>SIP Growth Calculator</h2>
+            <div class="calc-container">
+                <div class="input-group">
+                    <label>Monthly Investment (₹)</label>
+                    <input type="number" id="monthlyInv" value="5000">
+                </div>
+                <div class="input-group">
+                    <label>Expected Return (p.a %)</label>
+                    <input type="number" id="returns" value="12">
+                </div>
+                <div class="input-group">
+                    <label>Duration (Years)</label>
+                    <input type="number" id="years" value="10">
+                </div>
+                <button onclick="calculateSIP()" class="calc-btn">Calculate Your Vriddhi</button>
+                <div id="resultBox" class="result-display" style="display:none;">
+                    <p>Estimated Future Value:</p>
+                    <h3 id="sipResult"></h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 krishnavriddhicapital.com All rights reserved</p>
+        <div class="footer-links">
+            <a href="#">Facebook</a> | <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
