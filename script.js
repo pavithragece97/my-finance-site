@@ -1,95 +1,79 @@
 /**
- * Tab Switching Logic for Financial Tools
+ * Page Navigation - Exclusive Multi-Page Feel
  */
-function openCalc(calcName) {
-    // Hide all calculator content
-    const contents = document.querySelectorAll('.calc-content');
-    contents.forEach(content => content.classList.remove('active'));
+function navigateTo(pageId) {
+    // 1. Hide all views
+    const views = document.querySelectorAll('.view');
+    views.forEach(view => view.classList.remove('active'));
 
-    // Deactivate all tab buttons
-    const tabs = document.querySelectorAll('.tab-btn');
-    tabs.forEach(tab => tab.classList.remove('active'));
+    // 2. Show the requested view
+    const target = document.getElementById('page-' + pageId);
+    if (target) {
+        target.classList.add('active');
+    }
 
-    // Show the selected calculator and activate the clicked button
-    document.getElementById(calcName).classList.add('active');
-    event.currentTarget.classList.add('active');
+    // 3. Always scroll to top on change
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /**
- * SIP Growth Calculator Logic
- * Formula: M = P × ({[1 + i]^n – 1} / i) × (1 + i)
+ * Tool Tab Switching (SIP vs Risk)
  */
-function calculateSIP() {
-    const P = parseFloat(document.getElementById('sipAmount').value); // Monthly investment
-    const annualRate = parseFloat(document.getElementById('sipRate').value); // Expected annual return
-    const years = parseFloat(document.getElementById('sipYears').value); // Investment period
-    
-    if (!P || !annualRate || !years) {
+function switchTool(toolType) {
+    // Content toggle
+    document.querySelectorAll('.tool-content').forEach(c => c.classList.remove('active'));
+    document.getElementById('tool-' + toolType).classList.add('active');
+
+    // Button toggle
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + toolType).classList.add('active');
+}
+
+/**
+ * SIP Calculation Logic
+ */
+function doSipCalc() {
+    const p = parseFloat(document.getElementById('sip-amount').value);
+    const r = parseFloat(document.getElementById('sip-rate').value) / 100 / 12;
+    const n = parseFloat(document.getElementById('sip-years').value) * 12;
+
+    if (isNaN(p) || isNaN(r) || isNaN(n)) {
         alert("Please enter valid numbers");
         return;
     }
 
-    const i = (annualRate / 100) / 12; // Monthly interest rate
-    const n = years * 12; // Total number of months
-    
-    const futureValue = P * (((Math.pow(1 + i, n) - 1) / i) * (1 + i));
-    const totalInvested = P * n;
-    const wealthGained = futureValue - totalInvested;
-
-    document.getElementById('sipResult').innerHTML = `
-        <div style="font-size: 0.9rem; opacity: 0.8;">Expected Wealth</div>
-        <div style="font-size: 1.5rem; margin: 5px 0;">₹${Math.round(futureValue).toLocaleString('en-IN')}</div>
-        <div style="font-size: 0.8rem; color: #27ae60;">Wealth Gained: ₹${Math.round(wealthGained).toLocaleString('en-IN')}</div>
+    const m = p * (((Math.pow(1 + r, n) - 1) / r) * (1 + r));
+    document.getElementById('sip-res').innerHTML = `
+        <p style="font-size:0.8rem; font-weight:normal; margin-bottom:5px;">Projected Wealth</p>
+        <div style="font-size:1.5rem;">₹ ${Math.round(m).toLocaleString('en-IN')}</div>
     `;
 }
 
 /**
- * Risk Appetite Assessment Logic
- * Scores the user based on Goal and Market Reaction
+ * Risk Assessment Logic
  */
-function calculateRisk() {
-    const goalScore = parseInt(document.getElementById('riskGoal').value);
-    const reactionScore = parseInt(document.getElementById('riskReaction').value);
-    const totalScore = goalScore + reactionScore;
-    
+function doRiskCalc() {
+    const goal = parseInt(document.getElementById('risk-goal').value);
+    const react = parseInt(document.getElementById('risk-react').value);
+    const total = goal + react;
+
     let profile = "";
-    let description = "";
+    if (total <= 2) profile = "Conservative (Capital Protection)";
+    else if (total <= 4) profile = "Moderate (Balanced Growth)";
+    else profile = "Aggressive (Wealth Creation)";
 
-    if (totalScore <= 2) {
-        profile = "Conservative";
-        description = "Focus on Debt & Capital Protection.";
-    } else if (totalScore <= 4) {
-        profile = "Moderate";
-        description = "Balanced mix of Equity and Debt.";
-    } else {
-        profile = "Aggressive";
-        description = "High Equity exposure for maximum growth.";
-    }
-
-    document.getElementById('riskResult').innerHTML = `
-        <div style="font-size: 0.9rem; opacity: 0.8;">Your Investment Profile</div>
-        <div style="font-size: 1.4rem; color: #C5A059; margin: 5px 0;">${profile}</div>
-        <div style="font-size: 0.85rem;">Strategy: ${description}</div>
+    document.getElementById('risk-res').innerHTML = `
+        <p style="font-size:0.8rem; font-weight:normal; margin-bottom:5px;">Your Profile</p>
+        <div style="font-size:1.2rem; color:#002147;">${profile}</div>
     `;
 }
 
 /**
- * Lead Generation Form Handling
+ * Lead Form Handler
  */
-document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+document.getElementById('lead-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const service = document.getElementById('service').value;
-    
-    // Aesthetic confirmation
-    alert(`Thank you, ${name}! Your interest in ${service} has been recorded. Our IIM Alumni experts will contact you shortly.`);
-    
+    const name = document.getElementById('lead-name').value;
+    alert(`Thank you ${name}. Your registration is successful. An IIM expert will contact you within 24 hours.`);
     this.reset();
 });
-
-/**
- * Smooth Scroll for Navigation Links
- */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (
