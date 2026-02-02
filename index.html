@@ -4,20 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krishna Vriddhi Capital | Wealth Management by IIM Alumni</title>
-    <meta name="description" content="Premium wealth management and portfolio growth services by IIM Alumni. Specialized in tax planning and investment compounding.">
-    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav>
-        <div class="logo">
-            <img src="logo.png" alt="Krishna Vriddhi Capital">
-        </div>
+        <div class="logo"><img src="logo.png" alt="Krishna Vriddhi Capital"></div>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
-            <li><a href="#vision">Mission & Vision</a></li>
+            <li><a href="#calculators">Calculators</a></li>
             <li><a href="#inquire">Inquire</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -25,26 +21,78 @@
 
     <header class="hero">
         <h1>Building Disciplined Wealth</h1>
-        <p>Managed by IIM Alumni with over a decade of expertise. We help you achieve financial <strong>Vriddhi</strong> through research-driven portfolio management and tax optimization.</p>
+        <p>Managed by IIM Alumni. We help you achieve financial <strong>Vriddhi</strong> through research-driven portfolio management and tax optimization.</p>
         <a href="#inquire" class="btn">Begin Your Journey</a>
     </header>
+
+    <section id="calculators" class="bg-light">
+        <h2 class="section-title">Financial Planning Tools</h2>
+        <div class="calc-tabs">
+            <button class="tab-btn active" onclick="openCalc('sip')">SIP Calculator</button>
+            <button class="tab-btn" onclick="openCalc('risk')">Risk Appetite</button>
+        </div>
+
+        <div id="sip" class="calc-content active">
+            <div class="form-container">
+                <h3>SIP Growth Calculator</h3><br>
+                <div class="form-group">
+                    <label>Monthly Investment (₹)</label>
+                    <input type="number" id="sipAmount" value="5000">
+                </div>
+                <div class="form-group">
+                    <label>Expected Return (%)</label>
+                    <input type="number" id="sipRate" value="12">
+                </div>
+                <div class="form-group">
+                    <label>Time Period (Years)</label>
+                    <input type="number" id="sipYears" value="10">
+                </div>
+                <button class="btn btn-full" onclick="calculateSIP()">Calculate Growth</button>
+                <div id="sipResult" class="result-box"></div>
+            </div>
+        </div>
+
+        <div id="risk" class="calc-content">
+            <div class="form-container">
+                <h3>Risk Appetite Assessment</h3><br>
+                <div class="form-group">
+                    <label>What is your investment goal?</label>
+                    <select id="riskGoal">
+                        <option value="1">Capital Protection (Safe)</option>
+                        <option value="2">Balanced Growth</option>
+                        <option value="3">Wealth Creation (Aggressive)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>How do you react to market drops?</label>
+                    <select id="riskReaction">
+                        <option value="1">Panic and Sell</option>
+                        <option value="2">Stay Calm / Do Nothing</option>
+                        <option value="3">Buy More</option>
+                    </select>
+                </div>
+                <button class="btn btn-full" onclick="calculateRisk()">Check Profile</button>
+                <div id="riskResult" class="result-box"></div>
+            </div>
+        </div>
+    </section>
 
     <section id="about">
         <h2 class="section-title">About Our Expertise</h2>
         <div class="container-narrow">
-            <p>Founded by IIM alumni with close to 10 years of experience in financial markets, our goal is to ensure your money grows sustainably. We handle the complexity of market cycles and "candle bars" so you can focus on your life, while we focus on your prosperity.</p>
+            <p>Founded by IIM alumni with close to 10 years of experience, our goal is to ensure your money grows sustainably without you having to monitor "candle bars" daily.</p>
         </div>
     </section>
 
-    <section id="vision" class="bg-light">
+    <section id="vision" class="bg-navy-dark">
         <div class="grid container">
-            <div class="card">
+            <div class="card gold-card">
                 <h3>Our Vision</h3>
-                <p>To become India's most trusted boutique wealth management firm, combining timeless wisdom with modern financial acumen to help clients achieve both monetary success and peace of mind.</p>
+                <p>To become India's most trusted boutique wealth management firm, combining timeless wisdom with modern financial acumen.</p>
             </div>
-            <div class="card">
+            <div class="card gold-card">
                 <h3>Our Mission</h3>
-                <p>To empower individuals and families to achieve sustainable financial growth through values-driven, personalized wealth management rooted in integrity and discipline.</p>
+                <p>To empower families toward sustainable financial growth through values-driven, personalized wealth management.</p>
             </div>
         </div>
     </section>
@@ -53,22 +101,8 @@
         <h2 class="section-title">Inquire Now</h2>
         <div class="form-container">
             <form id="inquiryForm">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="name" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
-                    <label>Mobile Number</label>
-                    <input type="tel" id="phone" placeholder="+91 00000 00000" required>
-                </div>
-                <div class="form-group">
-                    <label>Interested In</label>
-                    <select id="interest">
-                        <option>Portfolio Management</option>
-                        <option>Tax Planning</option>
-                        <option>Retirement Planning</option>
-                    </select>
-                </div>
+                <div class="form-group"><label>Full Name</label><input type="text" id="name" required></div>
+                <div class="form-group"><label>Mobile</label><input type="tel" id="phone" required></div>
                 <button type="submit" class="btn btn-full">Submit Details</button>
             </form>
         </div>
@@ -81,35 +115,16 @@
                 <h3>Contact Details</h3>
                 <p><strong>Phone:</strong> +91 90548 29239</p>
                 <p><strong>Email:</strong> sales@krishnavriddhicapital.com</p>
-                <br>
-                <p><strong>Office Address:</strong><br>
-                G-59, La Citadel Complex, Opp. Ganga Hotel,<br>
-                Kangaru Circle, Puna Patiya, Surat,<br>
-                Gujarat 395010</p>
+                <p>G-59, La Citadel Complex, Surat, 395010</p>
             </div>
             <div class="map-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.4005828453476!2d72.89165907526065!3d21.17625058051286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fbc8736362d%3A0xc3f8e59ec4764831!2sLa%20Citadel%20Complex!5e0!3m2!1sen!2sin!4v1700000000000" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.1462058098313!2d72.8916590750348!3d21.14656918053427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fe663529b53%3A0x6a0f44357591606!2sPuna%20Patiya!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-grid container">
-            <div>
-                <h4>Krishna Vriddhi Capital</h4>
-                <p>Empowering your financial journey with IIM-led expertise.</p>
-            </div>
-            <div>
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#inquire">Registration</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            © 2026 Krishna Vriddhi Capital. All Rights Reserved.
-        </div>
+        <div class="footer-bottom">© 2026 Krishna Vriddhi Capital. All Rights Reserved.</div>
     </footer>
 
     <script src="script.js"></script>
