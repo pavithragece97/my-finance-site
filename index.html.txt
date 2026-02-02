@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Vriddhi Capital | Wealth Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Krishna Vriddhi Capital</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#contact" class="btn">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Grow Your Wealth with Confidence</h1>
+            <p>Expert financial advisory and portfolio management tailored for your future.</p>
+            <a href="#" class="cta-button">Get Started</a>
+        </div>
+    </header>
+
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="card">
+                <h3>Mutual Funds</h3>
+                <p>Diversify your investments with expert-picked funds.</p>
+            </div>
+            <div class="card">
+                <h3>Tax Planning</h3>
+                <p>Maximize your savings with smart tax strategies.</p>
+            </div>
+            <div class="card">
+                <h3>Retirement</h3>
+                <p>Secure your future with long-term wealth growth.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
