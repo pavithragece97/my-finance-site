@@ -1,42 +1,25 @@
-// --- Risk Assessment Logic ---
-let score = 0;
-function handleRisk(step, val) {
-    score += val;
-    document.getElementById('q-step-' + step).style.display = 'none';
-    if (step < 3) {
-        document.getElementById('q-step-' + (step + 1)).style.display = 'block';
-    } else {
-        const res = document.getElementById('risk-res');
-        res.style.display = 'block';
-        const type = document.getElementById('res-type');
-        const desc = document.getElementById('res-desc');
-        if (score <= 6) { type.innerText = "Conservative"; desc.innerText = "Prioritize safety. Debt and FDs are ideal."; }
-        else if (score <= 11) { type.innerText = "Moderate"; desc.innerText = "Balanced growth with mixed Equity and Debt."; }
-        else { type.innerText = "Aggressive"; desc.innerText = "High-growth focus. Equity and PMS are suitable."; }
-    }
-}
-function resetRisk() {
-    score = 0;
-    document.getElementById('risk-res').style.display = 'none';
-    document.getElementById('q-step-1').style.display = 'block';
-    document.getElementById('q-step-2').style.display = 'none';
-    document.getElementById('q-step-3').style.display = 'none';
-}
-
-// --- SIP Calculator Logic ---
-function runSip() {
-    const P = parseFloat(document.getElementById('sip-amt').value);
-    const r = (parseFloat(document.getElementById('sip-rate').value) / 100) / 12;
-    const n = parseFloat(document.getElementById('sip-years').value) * 12;
-    if (isNaN(P) || isNaN(r) || isNaN(n)) { alert("Check your inputs!"); return; }
-    const fv = P * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
-    document.getElementById('sip-res-box').style.display = 'block';
-    document.getElementById('sip-val').innerText = "₹" + Math.round(fv).toLocaleString('en-IN');
-}
-
-// --- Form Handling ---
-document.getElementById('leadForm')?.addEventListener('submit', function(e) {
+// Simple Form Handling
+document.getElementById('inquiryForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert("Inquiry Received! We will contact you shortly.");
+    
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    
+    // In a real scenario, this would send data to a server
+    alert(`Thank you ${name}! Our IIM Alumni experts will contact you on ${phone} shortly.`);
+    
     this.reset();
+});
+
+// Navigation Highlight on Scroll
+window.addEventListener('scroll', () => {
+    let current = "";
+    const sections = document.querySelectorAll("section, header");
+    
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 100) {
+            current = section.getAttribute("id");
+        }
+    });
 });
