@@ -1,146 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krishna Vriddhi Capital | IIM Alumni Wealth Management</title>
-    <meta name="description" content="IIM Alumni-led wealth management in Surat. Disciplined portfolio management and tax optimization.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Krishna Vriddhi Capital | Home</title>
+    <style>
+        :root { --blue: #002e5b; --green: #2d7a31; --light: #f8f9fa; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--light); line-height: 1.6; }
+        nav { background: var(--blue); padding: 15px; text-align: center; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        .hero { background: linear-gradient(rgba(0,46,91,0.8), rgba(0,46,91,0.8)), url('hq.png'); 
+                height: 500px; background-size: cover; color: white; display: flex; flex-direction: column; 
+                justify-content: center; align-items: center; text-align: center; }
+        .btn { background: var(--green); color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; margin-top: 20px; display: inline-block; }
+    </style>
 </head>
 <body>
-
-    <nav class="navbar">
-        <div class="nav-content">
-            <div class="brand" onclick="scrollToPage('page-firm')">
-                <img src="logo.png" alt="Logo" class="logo-img">
-                <div class="brand-text">
-                    <h1>KRISHNA VRIDDHI</h1>
-                    <span>CAPITAL</span>
-                </div>
-            </div>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="javascript:void(0)" onclick="scrollToPage('page-firm')">STRATEGY</a></li>
-                    <li><a href="javascript:void(0)" onclick="scrollToPage('page-tools')">TOOLS</a></li>
-                    <li><a href="javascript:void(0)" onclick="scrollToPage('page-contact')">INQUIRE</a></li>
-                </ul>
-                <div class="social-icons-top">
-                    <a href="https://www.linkedin.com/company/krishnavc/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn"></a>
-                    <a href="https://www.instagram.com/krishna_vriddhi_capital?igsh=cjU5M3JzcDhsaWg5" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png" alt="Instagram"></a>
-                </div>
-            </div>
-        </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="offerings.html">Offerings</a>
+        <a href="tools.html">Strategic Tools</a>
+        <a href="visit.html">Visit Us</a>
     </nav>
-
-    <section id="page-firm" class="snap-page page-white">
-        <div class="container">
-            <div class="hero-box">
-                <span class="pedigree">Managed by IIM Alumni</span>
-                <h2 class="headline">Building Disciplined Wealth.</h2>
-                <p class="hero-desc">With over a decade of market expertise, we handle the complexity of market cycles and "candle bars" so you can focus on your life.</p>
-            </div>
-            <div class="pillars-grid">
-                <div class="pillar-card">
-                    <h3>OUR MISSION</h3>
-                    <p>Empowering families toward sustainable growth through values-driven, personalized wealth management.</p>
-                </div>
-                <div class="pillar-card">
-                    <h3>OUR VISION</h3>
-                    <p>To become India's most trusted boutique wealth management firm, combining timeless wisdom with modern data.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="page-tools" class="snap-page page-slate">
-        <div class="container">
-            <h2 class="section-title">Strategic Planning Tools</h2>
-            <div class="tools-layout">
-                <div class="tool-card">
-                    <h4>SIP GROWTH PREDICTOR</h4>
-                    <div class="form-group">
-                        <label>Monthly Amount (₹)</label>
-                        <input type="number" id="sip-p" value="10000">
-                    </div>
-                    <div class="form-group">
-                        <label>Expected Return (%)</label>
-                        <input type="number" id="sip-r" value="12">
-                    </div>
-                    <div class="form-group">
-                        <label>Duration (Years)</label>
-                        <input type="number" id="sip-n" value="15">
-                    </div>
-                    <button class="btn-navy" onclick="calculateSIP()">Calculate Growth</button>
-                    <div id="sip-result" class="result-display">Enter values to see projection</div>
-                </div>
-
-                <div class="tool-card">
-                    <h4>RISK APPETITE PROFILER</h4>
-                    <div class="form-group">
-                        <label>Investment Goal</label>
-                        <select id="risk-goal">
-                            <option value="1">Capital Protection (Safe)</option>
-                            <option value="2">Balanced Growth (Moderate)</option>
-                            <option value="3">Wealth Multiplication (Aggressive)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Market Volatility Reaction</label>
-                        <select id="risk-react">
-                            <option value="1">Panic and Sell</option>
-                            <option value="2">Stay Calm / Do Nothing</option>
-                            <option value="3">Invest More</option>
-                        </select>
-                    </div>
-                    <button class="btn-navy" onclick="calculateRisk()">Check Profile</button>
-                    <div id="risk-result" class="result-display">Result will appear here</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="page-contact" class="snap-page page-navy">
-        <div class="container contact-grid">
-            <div class="inquiry-area">
-                <div class="inquiry-card">
-                    <h3>Inquire Now</h3>
-                    <form id="lead-form">
-                        <input type="text" id="name" placeholder="Full Name" required>
-                        <input type="tel" id="phone" placeholder="Mobile Number" required>
-                        <select id="service">
-                            <option>Portfolio Management (PMS)</option>
-                            <option>Tax Optimization</option>
-                            <option>Mutual Fund/SIP</option>
-                        </select>
-                        <button type="submit" class="btn-slate">Register Interest</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="details-area">
-                <div class="contact-info">
-                    <p class="label">VISIT</p>
-                    <p class="info-text">G-59, La Citadel Complex, Opp. Ganga Hotel, Puna Patiya, Surat, Gujarat 395010</p>
-                    
-                    <p class="label">CONNECT</p>
-                    <p class="info-text">+91 90548 29239<br>sales@krishnavriddhicapital.com</p>
-
-                    <div class="social-links-bottom">
-                        <a href="https://www.linkedin.com/company/krishnavc/" target="_blank">LINKEDIN</a>
-                        <a href="https://www.instagram.com/krishna_vriddhi_capital?igsh=cjU5M3JzcDhsaWg5" target="_blank">INSTAGRAM</a>
-                    </div>
-                </div>
-                <div class="map-wrapper">
-                    <iframe class="grayscale-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.123456789!2d72.856!3d21.176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDEwJzMzLjYiTiA3MsKwNTEnMjEuNiJF!5e0!3m2!1sen!2sin!4v1620000000000" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
-        <footer class="footer-bottom">
-            © 2026 Krishna Vriddhi Capital. All Rights Reserved.
-        </footer>
-    </section>
-
-    <script src="script.js"></script>
+    <div class="hero">
+        <img src="kvlogo.png" style="height: 100px; margin-bottom: 20px;">
+        <h1>KRISHNA VRIDDHI CAPITAL</h1>
+        <p style="font-size: 20px;">Managed by IIM Alumni | Elevating Your Financial Future</p>
+        <a href="offerings.html" class="btn">Explore Our Services</a>
+    </div>
+    <div style="max-width: 800px; margin: 50px auto; padding: 20px; text-align: center;">
+        <h2>About the Firm</h2>
+        <p>Krishna Vriddhi Capital stands at the intersection of institutional expertise and personalized wealth management. Founded by IIM Alumni, we bring disciplined investment strategies to individual and corporate portfolios in Surat.</p>
+    </div>
 </body>
 </html>
